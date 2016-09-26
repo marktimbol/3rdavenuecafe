@@ -11,7 +11,7 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-    	return Category::with('menus')->latest()->get();
+    	return Category::with('menus')->latest()->get()->toJson();
     }
 
     public function show($category)
