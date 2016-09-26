@@ -17,4 +17,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-Route::get('/menus', 'Api\MenusController@index');
+Route::resource('/menus', 'Api\MenusController', [
+	'only' => ['index', 'show']
+]);
+
+Route::resource('/categories', 'Api\CategoriesController', [
+	'only'	=> ['index', 'show']
+]);

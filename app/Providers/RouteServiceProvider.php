@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
+use App\Category;
+use App\Menu;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -23,9 +25,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+        
+        Route::model('menu', Menu::class);
+        Route::bind('category', function($id) {
+            return Category::with('menus')->findOrFail($id);
+        });
     }
 
     /**

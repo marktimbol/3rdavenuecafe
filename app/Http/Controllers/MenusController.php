@@ -13,4 +13,9 @@ class MenusController extends Controller
     	$menus = Menu::latest()->get();
     	return view('public.menus.index', compact('menus'));
     }
+
+    public function show($menu)
+    {
+    	return view('public.menus.show', compact('menu'));
+    }
 }

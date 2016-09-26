@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Menu;
 use Illuminate\Http\Request;
 
-class MenusController extends Controller
+class CategoriesController extends Controller
 {
     public function index()
     {
-    	return Menu::latest()->get();
+    	return Category::with('menus')->latest()->get();
     }
 
-    public function show($menu)
+    public function show($category)
     {
-    	return $menu;
+    	return $category;
     }
 }

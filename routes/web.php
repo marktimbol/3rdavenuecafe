@@ -17,6 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/menus', 'MenusController@index');
+Route::resource('/menus', 'MenusController', [
+	'only' => ['index', 'show']
+]);
+
+Route::resource('/categories', 'CategoriesController', [
+	'only'	=> ['index', 'show']
+]);
 
 // Route::get('/home', 'HomeController@index');

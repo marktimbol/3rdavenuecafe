@@ -31,7 +31,9 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Menu::class, function (Faker\Generator $faker) {
     return [
-        'category_id' => factory(App\Category::class)->create()->id,
+        'category_id' => function() {
+            factory(App\Category::class)->create()->id;
+        },
         'name' => $faker->sentence,
         'price' => $faker->randomNumber(2),
         'description' => $faker->paragraph,

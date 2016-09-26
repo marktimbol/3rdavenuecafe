@@ -8,8 +8,11 @@ class Category extends Model
 {
 	// protected $with = ['menus'];
 
- //    public function menus()
- //    {
- //    	return $this->hasMany(Menu::class);
- //    }
+	/**
+	 * Get the menus for the category
+	 */
+    public function menus()
+    {
+    	return $this->hasMany(Menu::class);
+    }
 }
